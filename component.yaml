@@ -12,3 +12,6 @@ subcomponents:
 - name: "kured"
   source: "https://github.com/timfpark/fabrikate-kured"
   method: "git"
+- name: "jaeger"
+  source: "https://github.com/bnookala/fabrikate-jaeger"
+  method: "git"
