@@ -1,6 +1,8 @@
 # fabrikate-cloud-native
 
-An opinionated open platform cloud native Fabrikate stack.  It includes:
+An opinionated open platform cloud native Fabrikate stack for operating Kubernetes clusters.
+
+It includes:
 
 Cluster Maintainance
 -   [Kured](https://github.com/weaveworks/kured): Automatic node reboot when OS is patched. (via [fabrikate-kured](https://github.com/timfpark/fabrikate-kured))
