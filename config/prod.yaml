@@ -1,4 +1,26 @@
 subcomponents:
+  elasticsearch-fluentd-kibana:
+    config:
+    subcomponents:
+      elasticsearch:
+        config:
+          master:
+            persistence:
+              size: 4Gi
+          data:
+            persistence:
+              size: 64Gi
+  prometheus-grafana:
+    config:
+    subcomponents:
+      prometheus:
+        config:
+          alertmanager:
+            persistentVolume:
+              size: 4Gi
+          server:
+            persistentVolume:
+              size: 64Gi
   jaeger:
     config:
     subcomponents:

@@ -7,11 +7,9 @@ subcomponents:
           master:
             persistence:
               storageClass: "managed-premium"
-              size: 4Gi
           data:
             persistence:
               storageClass: "managed-premium"
-              size: 64Gi
   prometheus-grafana:
     config:
     subcomponents:
@@ -24,8 +22,6 @@ subcomponents:
           alertmanager:
             persistentVolume:
               storageClass: "managed-premium"
-              size: 4Gi
           server:
             persistentVolume:
               storageClass: "managed-premium"
-              size: 64Gi
