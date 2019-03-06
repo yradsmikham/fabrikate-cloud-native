@@ -20,7 +20,6 @@ subcomponents:
         dashboard:
           jaegerURL: "http://jaeger-query.jaeger.svc.cluster.local"
           grafanaURL: "http://grafana.grafana.svc.cluster.local"
-        enabled: true
 
   prometheus-grafana:
     subcomponents:
