@@ -1,4 +1,6 @@
 name: "cloud-native"
+generator: "static"
+path: "./manifests"
 subcomponents:
   - name: "elasticsearch-fluentd-kibana"
     source: "https://github.com/timfpark/fabrikate-elasticsearch-fluentd-kibana"

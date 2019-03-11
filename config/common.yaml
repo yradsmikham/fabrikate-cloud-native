@@ -9,13 +9,18 @@ subcomponents:
     config:
       namespace: istio-system # this is created by the Istio component
       tracing:
-        enabled: false # Provided by Jaeger component
+        enabled: false # Provided by Jaeger
       global:
         enableTracing: true # Enable global.enableTracing to make use of our manual Jaeger installation
       prometheus:
         enabled: false # Provided by Prometheus-Grafana component; Inject the istio monitoring jobs via extraScrapeConfigs in Prometheus chart
       grafana:
         enabled: false # Provided by Prometheus-Grafana component
+      kiali:
+        dashboard:
+          jaegerURL: "http://jaeger-query.jaeger.svc.cluster.local"
+          grafanaURL: "http://grafana.grafana.svc.cluster.local"
+        enabled: true
 
   prometheus-grafana:
     subcomponents:
