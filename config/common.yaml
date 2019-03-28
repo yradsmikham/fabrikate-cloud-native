@@ -6,8 +6,8 @@ subcomponents:
         prometheus-url: http://prometheus-server.prometheus.svc.cluster.local
 
   istio:
+    namespace: istio-system # this is created by the Istio component
     config:
-      namespace: istio-system # this is created by the Istio component
       tracing:
         enabled: false # Provided by Jaeger
       global:
