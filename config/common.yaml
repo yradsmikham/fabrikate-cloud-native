@@ -21,6 +21,9 @@ subcomponents:
           jaegerURL: "http://jaeger-query.jaeger.svc.cluster.local"
           grafanaURL: "http://grafana.grafana.svc.cluster.local"
         enabled: true
+      mixer:
+        adapters:
+          useAdapterCRDs: false # for performance, will be default in istio 1.2 https://github.com/istio/istio/pull/8356
 
   prometheus-grafana:
     subcomponents:
