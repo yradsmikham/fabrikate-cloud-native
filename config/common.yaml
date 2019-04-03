@@ -31,7 +31,7 @@ subcomponents:
         config:
           # Configure Prometheus to scrape Istio
           # https://github.com/istio/istio/issues/2920#issuecomment-434355025
-          # Populated and materialized from (most recent change before Istio 1.1.0): https://github.com/istio/istio/blob/2b6c013ff3d26b953588000564f0b7dc6aa880d6/install/kubernetes/helm/subcharts/prometheus/templates/configmap.yaml#L17-L132
+          # Populated and materialized from: https://raw.githubusercontent.com/istio/istio/554960d96a5d086b0ae9a5086bde9347202811a1/install/kubernetes/helm/istio/charts/prometheus/templates/configmap.yaml
           extraScrapeConfigs: |
             - job_name: 'istio-mesh'
               kubernetes_sd_configs:
@@ -39,15 +39,18 @@ subcomponents:
                 namespaces:
                   names:
                   - istio-system
+
               relabel_configs:
               - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istio-telemetry;prometheus
+
             # Scrape config for envoy stats
             - job_name: 'envoy-stats'
               metrics_path: /stats/prometheus
               kubernetes_sd_configs:
               - role: pod
+
               relabel_configs:
               - source_labels: [__meta_kubernetes_pod_container_port_name]
                 action: keep
@@ -65,6 +68,7 @@ subcomponents:
               - source_labels: [__meta_kubernetes_pod_name]
                 action: replace
                 target_label: pod_name
+
               metric_relabel_configs:
               # Exclude some of the envoy metrics that have massive cardinality
               # This list may need to be pruned further moving forward, as informed
@@ -96,43 +100,64 @@ subcomponents:
               - source_labels: [ __name__ ]
                 regex: 'envoy_cluster_(lb|retry|bind|internal|max|original).*'
                 action: drop
+
             - job_name: 'istio-policy'
               kubernetes_sd_configs:
               - role: endpoints
                 namespaces:
                   names:
                   - istio-system
+
+
               relabel_configs:
               - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istio-policy;http-monitoring
+
             - job_name: 'istio-telemetry'
               kubernetes_sd_configs:
               - role: endpoints
                 namespaces:
                   names:
                   - istio-system
+
               relabel_configs:
               - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istio-telemetry;http-monitoring
+
             - job_name: 'pilot'
               kubernetes_sd_configs:
               - role: endpoints
                 namespaces:
                   names:
                   - istio-system
+
               relabel_configs:
               - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istio-pilot;http-monitoring
+
             - job_name: 'galley'
               kubernetes_sd_configs:
               - role: endpoints
                 namespaces:
                   names:
                   - istio-system
+
               relabel_configs:
               - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
                 action: keep
                 regex: istio-galley;http-monitoring
+
+            - job_name: 'citadel'
+              kubernetes_sd_configs:
+              - role: endpoints
+                namespaces:
+                  names:
+                  - istio-system
+
+              relabel_configs:
+              - source_labels: [__meta_kubernetes_service_name, __meta_kubernetes_endpoint_port_name]
+                action: keep
+                regex: istio-citadel;http-monitoring
