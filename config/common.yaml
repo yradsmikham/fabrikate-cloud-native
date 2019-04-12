@@ -22,6 +22,7 @@ subcomponents:
           grafanaURL: "http://grafana.grafana.svc.cluster.local"
         enabled: true
         prometheusAddr: http://prometheus-server.prometheus.svc.cluster.local
+        tag: v0.18
       mixer:
         adapters:
           useAdapterCRDs: false # for performance, will be default in istio 1.2 https://github.com/istio/istio/pull/8356
