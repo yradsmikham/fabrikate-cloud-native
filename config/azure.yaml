@@ -3,7 +3,7 @@ subcomponents:
   elasticsearch-fluentd-kibana:
     config:
     subcomponents:
-      elasticsearch: 
+      elasticsearch:
         config:
           master:
             persistence:
@@ -20,7 +20,7 @@ subcomponents:
         config:
           persistence:
             storageClassName: "managed-premium"
-      prometheus: 
+      prometheus:
         config:
           alertmanager:
             persistentVolume:
