@@ -1,0 +1,3 @@
+info: Initializing bedrock HLD repository. {"service":"spk","timestamp":"2019-11-15T18:22:17.161Z"}
+info: Generating hld azure-pipelines.yaml in /Users/yvonneradsmikham/Microsoft/fabrikate-cloud-native {"service":"spk","timestamp":"2019-11-15T18:22:17.163Z"}
+info: Writing azure-pipelines.yaml file to /Users/yvonneradsmikham/Microsoft/fabrikate-cloud-native/azure-pipelines.yaml {"service":"spk","timestamp":"2019-11-15T18:22:17.165Z"}
